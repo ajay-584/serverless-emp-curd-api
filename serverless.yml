@@ -1,0 +1,68 @@
+# "org" ensures this Service is used with the correct Serverless Framework Access Key.
+org: ajay0584
+# "service" is the name of this project. This will also be added to your AWS resource names.
+service: sls-curd-app
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  environment:
+    JWT_SECRET: yourfavoritecolor
+    MONGODB_URI: mongodb+srv://serverless:d5bCy3B5GtZORUvm@cluster0.7au1e.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+
+functions:
+  createEmployee:
+    handler: handlers/createEmployee.createEmployee
+    events:
+      - http:
+          path: addEmployees
+          method: post
+          cors: true
+          authorizer: authenticate
+  readEmployee:
+    handler: handlers/readEmployee.readEmployee
+    events:
+      - http:
+          path: getEmployees/{id}
+          method: get
+          cors: true
+          authorizer: authenticate
+  listEmployees:
+    handler: handlers/readEmployee.listEmployees
+    events:
+      - http:
+          path: allEmployees
+          method: get
+          cors: true
+          authorizer: authenticate
+  updateEmployee:
+    handler: handlers/updateEmployee.updateEmployee
+    events:
+      - http:
+          path: updateEmployees/{id}
+          method: put
+          cors: true
+          authorizer: authenticate
+  deleteEmployee:
+    handler: handlers/deleteEmployee.deleteEmployee
+    events:
+      - http:
+          path: deleteEmployees/{id}
+          method: delete
+          cors: true
+          authorizer: authenticate
+  generateToken:
+    handler: handlers/generateToken.generateToken
+    events:
+      - http:
+          path: get/auth/token
+          method: post
+          cors: true
+  authenticate:
+    handler: handlers/authenticate.authenticate
+    events:
+      - http:
+          path: auth/token
+          method: post
+plugins:
+  - serverless-offline

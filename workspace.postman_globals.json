@@ -1,0 +1,33 @@
+{
+	"id": "e96c54a2-7f4c-400d-844a-dde0e2a08798",
+	"values": [
+		{
+			"key": "AUTH_TOKEN",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "employeeId",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "url",
+			"value": "",
+			"type": "default",
+			"enabled": false
+		},
+		{
+			"key": "url",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		}
+	],
+	"name": "Globals",
+	"_postman_variable_scope": "globals",
+	"_postman_exported_at": "2024-08-22T11:45:30.014Z",
+	"_postman_exported_using": "Postman/11.8.1"
+}
